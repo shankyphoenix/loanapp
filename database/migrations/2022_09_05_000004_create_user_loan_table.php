@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('loan_type_id')->constrained();
-            $table->integer('load_amount');
+            $table->integer('loan_amount');
             $table->integer('tenure');
             $table->float('interest',8,2);
             $table->integer('emi');

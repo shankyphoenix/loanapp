@@ -4,8 +4,8 @@ shanky@technoscore.net
 shanky
 
 
-1|bSNNGQtWfu3dKaXBeS8LMz7qYhjLzMwkBu2dQbiH shanky
-2|4qV4ikD0jnS6GJb0MrMYBjCKrB5wh5QgP9Wy3RV4 phoenix
+1|bSNNGQtWfu3dKaXBeS8LMz7qYhjLzMwkBu2dQbiH shanky 1
+2|4qV4ikD0jnS6GJb0MrMYBjCKrB5wh5QgP9Wy3RV4 phoenix 2
 
 Schema::create('roles', function (Blueprint $table) {
             $table->id();
@@ -15,6 +15,36 @@ Schema::create('roles', function (Blueprint $table) {
         });
 $table->foreignId('role_id')->constrained()->cascadeOnDelete();
 
+
+
+User
+---------------------------------------
+Register
+Login
+Loan Request
+loans
+loans/id
+
+
+Admin
+---------------------------------------------------------------
+pending_loan_requests
+pending_loan_request/{request_id}
+pending_loan_request/{request_id}/{action}       P
+transaction
+transaction/search/{?name/loan/status}/{?searchtext}
+transaction/id
+users
+users/{?user_id}
+users/search/{?name/loan}/{?searchtext}
+users/{?user_id}                                  D
+
+
+
+
+
+user_by_id
+loan
 
 
 

@@ -42,4 +42,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function loans()
+    {
+        return $this->belongsToMany(LoanType::class,'loan_user');
+    }
+
+    public function transactions()
+    {
+        return $this->hasManyThrough(UserTransaction::class,LoanUser::class,'user_id','loan_user_id');
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id == 1?true:false;
+    }
+
 }

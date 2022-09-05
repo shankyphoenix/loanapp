@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('user_transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('loan_user_id')->constrained('loan_user');            
+            $table->string('status'); /* success | failed */
+            $table->string('payment_type'); /* Cash | Net Banking | paytm  */            
             $table->timestamps();
         });
     }
@@ -30,3 +32,4 @@ return new class extends Migration
         Schema::dropIfExists('user_transactions');
     }
 };
+                  
