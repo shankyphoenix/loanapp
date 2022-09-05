@@ -1,0 +1,54 @@
+
+shanky
+shanky@technoscore.net
+shanky
+
+
+1|bSNNGQtWfu3dKaXBeS8LMz7qYhjLzMwkBu2dQbiH shanky
+2|4qV4ikD0jnS6GJb0MrMYBjCKrB5wh5QgP9Wy3RV4 phoenix
+
+Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
+        });
+$table->foreignId('role_id')->constrained()->cascadeOnDelete();
+
+
+
+
+users
+ 	id 
+ 	email
+ 	password
+
+loans
+	id
+	type [personal/cooperate]
+	percentage[10-50/5-30]
+	term[10-50/5-30]
+
+user_loan
+	id
+	user_id
+	loan_id
+	percentage
+	status[pending/completed]
+	comments
+	tenure
+	emi
+	date
+
+
+user_transaction
+	id
+	user_loan_id
+	status [success/failed]
+	date
+
+
+
+
+
+https://dev.to/shanisingh03/laravel-api-authentication-using-laravel-sanctum-edg
