@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        $schedule->command('loan:markfailedemis')->cron("58 1 1 0 0");
+        $schedule->command('loan:emis')->cron("58 1 0 0 0");
     }
 
     /**

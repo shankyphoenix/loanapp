@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('tenure');
             $table->float('interest',8,2);            
             $table->string('status',30);
+            $table->tinyInteger('payment_day');
             $table->text('comment');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate(); 

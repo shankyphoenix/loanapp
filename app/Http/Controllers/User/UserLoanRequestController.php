@@ -20,6 +20,7 @@ class UserLoanRequestController extends Controller
             "loan_amount" => $request->loan_amount,
             "tenure" => $request->tenure,
             "status" => "pending",
+            "payment_day" => $request->payment_day,
             "interest" => $request->interest,            
             "created_at" => date("Y-m-d H:i:s"),
             "updated_at" => date("Y-m-d H:i:s")
