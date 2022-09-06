@@ -18,10 +18,14 @@ use App\Http\Controllers\Api\AuthController;
 
 Route::post('/auth/register', [AuthController::class, 'createUser']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
-Route::post('/request_loan', [UserLoanRequestController::class, 'request_a_loan']);
-Route::get('/loans', [LoanController::class, 'get_loans']);
-Route::get('/loans/{id}', [LoanController::class, 'loan_detail']);
 
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::prefix('user')->group(function () {        
+        Route::post('/request_loan', [\App\Http\Controllers\User\UserLoanRequestController::class, 'request_loan']);
+        Route::get('/loans', [\App\Http\Controllers\User\LoanController::class, 'get_loans']);
+        Route::get('/loans/{id}', [\App\Http\Controllers\User\LoanController::class, 'loan_detail']);
+    });        
+});
 
 Route::group(['middleware' => ['auth:sanctum','adminonly']], function() {
     Route::prefix('admin')->group(function () {        
@@ -31,8 +35,8 @@ Route::group(['middleware' => ['auth:sanctum','adminonly']], function() {
         Route::post('/pending_loan_requests/{request_id}/{action}', [\App\Http\Controllers\Admin\LoanController::class,"loan_action"]);
       
         Route::get('/transaction', [\App\Http\Controllers\Admin\TransactionController::class,"get_transactions"]);
-        Route::get('/transaction/search/{?field}/{searchtext}', [\App\Http\Controllers\Admin\TransactionController::class,"transaction_search"]);
         Route::get('/transaction/id', [\App\Http\Controllers\Admin\TransactionController::class,"transaction_detail"]);
+        Route::get('/transaction/search/{?field}/{searchtext}', [\App\Http\Controllers\Admin\TransactionController::class,"transaction_search"]);
 
         Route::get('/users', [\App\Http\Controllers\Admin\UserController::class,"get_users"]);
         Route::get('/users/id', [\App\Http\Controllers\Admin\UserController::class,"user_detail"]);

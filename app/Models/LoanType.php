@@ -11,7 +11,7 @@ class LoanType extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class,'loan_user');
+        return $this->belongsToMany(User::class, LoanUser::class)->withPivot('loan_amount','tenure','interest','status')->withTimestamps();;
     }
 
     public function transactions()

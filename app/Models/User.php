@@ -48,7 +48,7 @@ class User extends Authenticatable
      */
     public function loans()
     {
-        return $this->belongsToMany(LoanType::class,'loan_user');
+        return $this->belongsToMany(LoanType::class, LoanUser::class)->withPivot('loan_amount','tenure','interest','status')->withTimestamps();
     }
 
     public function transactions()

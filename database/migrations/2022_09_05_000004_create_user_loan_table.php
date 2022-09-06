@@ -19,9 +19,11 @@ return new class extends Migration
             $table->foreignId('loan_type_id')->constrained();
             $table->integer('loan_amount');
             $table->integer('tenure');
-            $table->float('interest',8,2);
-            $table->integer('emi');
-            $table->timestamps();
+            $table->float('interest',8,2);            
+            $table->string('status',30);
+            $table->text('comment');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate(); 
         });
     }
 

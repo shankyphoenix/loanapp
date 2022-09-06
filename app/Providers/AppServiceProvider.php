@@ -25,5 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->bind('App\Interface\User\UserInterface', 'App\Repositories\User\UserRepository');
+        $this->app->bind('App\Interface\Loan\LoanInterface', 'App\Repositories\Loan\LoanRepository');
+        $this->app->bind('App\Interface\Transaction\TransactionInterface', 'App\Repositories\Transaction\TransactionRepository');
     }
 }

@@ -16,6 +16,22 @@ Schema::create('roles', function (Blueprint $table) {
 $table->foreignId('role_id')->constrained()->cascadeOnDelete();
 
 
+Commands
+------------------------------------
+php artisan make:mail AdminRequestAction
+php artisan make:event PodcastProcessed
+php artisan make:middleware AdminOnly
+php artisan make:model LoanUser
+php artisian migrate
+php artisan make:controller Api\\AuthController
+php artisan make:resource UserResource
+php artisan make:controller UserController
+
+
+php artisan make:event WelcomeMessage
+php artisan make:listener SendMail
+
+php artisan make:event SendMail
 
 User
 ---------------------------------------
@@ -24,7 +40,6 @@ Login
 Loan Request
 loans
 loans/id
-
 
 Admin
 ---------------------------------------------------------------

@@ -11,15 +11,18 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\LoanType;
 use App\Interface\User\UserInterface;
 
+use App\Http\Resources\UserResource;
+use App\Http\Resources\UserCollection;
+
 class UserController extends Controller
 {
-    public function list_users(Request $request, UserInterface $user)
+    public function get_users(Request $request, UserInterface $user)
     {
-        dd($user->getAll());
+        return new UserCollection(User::orderBy('name')->paginate(100));
     }    
 
     public function list_user_loans(Request $request, UserInterface $user)
     {
-        dd($user->getAll());
+        return new UserResource(User::find($request_id));
     } 
 }
