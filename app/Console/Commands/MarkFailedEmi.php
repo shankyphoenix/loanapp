@@ -34,8 +34,8 @@ class MarkFailedEmi extends Command
         $data = LoanUser::where("status","ongoing")->get();
         $data->map(function($data){
             UserTransaction::where("loan_user_id",$data->id)
-                            ->where("status","pending")
-                            ->where("created_at",">",date("Y-m-d H:i:s"))
+                ->where("status","pending")
+                ->where("created_at","<",date("Y-m-d H:i:s"))
                 ->update([
                             "status"          =>  "failed",                          
                         ]);

@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::post('/request_loan', [\App\Http\Controllers\User\UserLoanRequestController::class, 'request_loan']);
         Route::get('/loans', [\App\Http\Controllers\User\LoanController::class, 'get_loans']);
         Route::get('/loans/{id}', [\App\Http\Controllers\User\LoanController::class, 'loan_detail']);
+        Route::post('/pay_emi/{next_transaction_id}', [\App\Http\Controllers\User\LoanController::class, 'pay_emi']);
     });        
 });
 

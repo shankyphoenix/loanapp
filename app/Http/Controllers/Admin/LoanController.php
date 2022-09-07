@@ -41,6 +41,12 @@ class LoanController extends Controller
 
         LoanUser::where("id",$request->request_id)->update(["status"=>$status_text,"comment"=>$request->comment]);
 
+        $loan = LoanUser::where("id",$request->request_id)->first();
+        $user = $loan->user;
+        $mailInfo =  ["to" => $user->email];
+
+        event(new \App\Events\AdminRequestAction($loan, $user, $mailInfo));
+
         return response()->json([
                 'status' => true,
                 'message' => $response_message,

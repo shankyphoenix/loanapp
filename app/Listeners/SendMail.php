@@ -27,7 +27,19 @@ class SendMail
     public function handle($event)
     {
         if($event instanceof \App\Events\WelcomeMessage) {            
-            Mail::to($event->mailInfo['to'])->send(new \App\Mail\WelcomeMessage($event->data));
+
+            Mail::to($event->data['mail_info']['to'])->send(new \App\Mail\WelcomeMessage($event->data));
+
+        }
+        if($event instanceof \App\Events\RequestedLoan) {                     
+
+            Mail::to($event->data['mail_info']['to'])->send(new \App\Mail\RequestLoan($event->data));
+
+        }
+        if($event instanceof \App\Events\AdminRequestAction) {            
+
+            Mail::to($event->data['mail_info']['to'])->send(new \App\Mail\AdminRequestAction($event->data));
+            
         }
     }
 }

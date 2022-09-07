@@ -18,6 +18,12 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\WelcomeMessage::class => [
             \App\Listeners\SendMail::class,
         ],
+        \App\Events\RequestedLoan::class => [
+            \App\Listeners\SendMail::class,
+        ],
+        \App\Events\AdminRequestAction::class => [
+            \App\Listeners\SendMail::class,
+        ],
     ];
 
     /**

@@ -6,6 +6,9 @@
     <title>{{env('APP_NAME')}}</title>
 </head>
 <body>
-   Welcome {{$user->name}}
+   <h1>Hi {{$data['user']->name}}</h1>
+
+  Welcome to LoanApp.com<br /><br />
+
 </body>
 </html>

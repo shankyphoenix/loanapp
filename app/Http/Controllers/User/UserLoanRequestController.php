@@ -14,7 +14,7 @@ class UserLoanRequestController extends Controller
     public function request_loan(LoanRequest $request)
     {
 
-        LoanUser::insert([
+        $lastID= LoanUser::insertGetId([
             "user_id" => $request->user()->id,
             "loan_type_id" => $request->loan_type_id,
             "loan_amount" => $request->loan_amount,
@@ -27,7 +27,7 @@ class UserLoanRequestController extends Controller
         ]);
 
         
-        //event(new \App\Events\SendNotification($user, ["to" => $request->email]));
+        event(new \App\Events\RequestedLoan(LoanUser::find($lastID), $request->user(), ["to" => $request->user()->email]));
 
 
         return response()->json([

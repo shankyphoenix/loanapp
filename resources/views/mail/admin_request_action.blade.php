@@ -6,10 +6,9 @@
     <title>{{env('APP_NAME')}}</title>
 </head>
 <body>
-   <h1>Welcome {{$data['user']->name}}</h1>
-   Your request for a loan is submitted successfully. Admin will soon verify and take action against the request for a loan.<br />
-   <br />
-   <strong>Loan Details:</strong>
+       <h1>Welcome {{$data['user']->name}}</h1>
+    <p>Your loan request has been {{($data['loan']->status == "ongoing")?"Approved":"Rejected"}}, following are the EMI details:</p>    
+     <strong>Loan Details:</strong>
    <br />
    <br />
    <table width="80%">
@@ -24,6 +23,10 @@
       <tr>
          <td><strong>Loan Tenure</strong></td>
          <td>{{$data['loan']->tenure}}</td>
+      </tr>
+      <tr>
+         <td><strong>Loan Tenure</strong></td>
+         <td>{{ ($data['loan']->status == "ongoing")?"Approved":"Rejected" }}</td>
       </tr>     
    </table>
 </body>
